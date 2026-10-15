@@ -40,8 +40,7 @@ public class IdorDemoService {
      * 그 외에는 AccessDeniedException 이 발생해 403 으로 응답한다.
      */
     public ProfileResponse getProfileSecure(Long id, UserInfoUserDetails me) {
-        //me.getAuthorities() List<GrantedAuthority>
-        boolean isAdmin = me.getAuthorities().stream() //Stream<GrantedAuthority>
+        boolean isAdmin = me.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
         boolean isOwner = id.equals(me.getUserInfo().getId());
 
